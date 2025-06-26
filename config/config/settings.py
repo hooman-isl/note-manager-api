@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",   # djangorestframework
+    "taggit",   # django-taggit
     "note.apps.NoteConfig",
 ]
 
@@ -138,3 +139,7 @@ LANGUAGES = [
     ('en', _('English')),
     ('fa', _('Persian')),
 ]
+
+
+# django-taggit
+TAGGIT_CASE_INSENSITIVE = True

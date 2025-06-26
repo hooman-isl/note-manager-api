@@ -23,3 +23,59 @@ msgstr ""
 #: .\config\settings.py:138
 msgid "Persian"
 msgstr ""
+
+#: .\note\apps.py:-
+msgid "Note"
+msgstr "یادداشت"
+
+#: .\note\apps.py:-
+msgid "Notes"
+msgstr "یادداشت ها"
+
+#: .\note\models.py:-
+msgid "Title"
+msgstr "عنوان"
+
+#: .\note\models.py:-
+msgid "Description"
+msgstr "توضیحات"
+
+#: .\note\models.py:-
+msgid "Status"
+msgstr "وضعیت"
+
+#: .\note\models.py:-
+msgid "Priority"
+msgstr "اولویت"
+
+#: .\note\models.py:-
+msgid "Created At"
+msgstr "ایجاد شده در"
+
+#: .\note\models.py:-
+msgid "Edited At"
+msgstr "ویرایش شده در"
+
+#: .\note\models.py:-
+msgid "Private"
+msgstr "خصوصی"
+
+#: .\note\models.py:-
+msgid "Public"
+msgstr "عمومی"
+
+#: .\note\models.py:-
+msgid "Low"
+msgstr "پایین"
+
+#: .\note\models.py:-
+msgid "Medium"
+msgstr "متوسط"
+
+#: .\note\models.py:-
+msgid "High"
+msgstr "بالا"
+
+#: .\note\models.py:-
+msgid "User"
+msgstr "کاربر"
