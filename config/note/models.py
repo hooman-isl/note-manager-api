@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from taggit.managers import TaggableManager
+from safe_filefield.models import SafeFileField
 
 
 class Status(models.TextChoices):
@@ -28,8 +29,7 @@ class Note(models.Model):
 
     def __str__(self):
         return (
-            f"note: '{textwrap.shorten(self.title, width=50, placeholder="...")}' "
-            f"from: {self.user}"
+            f"'{textwrap.shorten(self.title, width=50, placeholder="...")}' from {self.user}"
         )
 
     class Meta:
@@ -45,3 +45,12 @@ class Note(models.Model):
                 name="valid_priority_range"
             )
         ]
+
+
+class NoteFile(models.Model):
+    note = models.ForeignKey(Note, on_delete=models.CASCADE, verbose_name=_("Note"))
+    file = SafeFileField(upload_to="filess/", verbose_name=_("File"))
+
+    class Meta:
+        verbose_name = _("Note File")
+        verbose_name_plural = _("Note Files")

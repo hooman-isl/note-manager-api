@@ -79,3 +79,15 @@ msgstr "بالا"
 #: .\note\models.py:-
 msgid "User"
 msgstr "کاربر"
+
+#: .\note\models.py:-
+msgid "File"
+msgstr "فایل"
+
+#: .\note\models.py:-
+msgid "Note File"
+msgstr "فایل یادداشت"
+
+#: .\note\models.py:-
+msgid "Note Files"
+msgstr "فایل های یادداشت"

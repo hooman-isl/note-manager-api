@@ -143,3 +143,8 @@ LANGUAGES = [
 
 # django-taggit
 TAGGIT_CASE_INSENSITIVE = True
+
+
+# Media URL
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

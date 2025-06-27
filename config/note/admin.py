@@ -1,5 +1,12 @@
 from django.contrib import admin
-from note.models import Note
+from note.models import *
 
 
-admin.site.register(Note)
+class NoteFileInline(admin.StackedInline):
+    model = NoteFile
+    extra = 0
+
+
+@admin.register(Note)
+class NoteAdmin(admin.ModelAdmin):
+    inlines = [NoteFileInline]
