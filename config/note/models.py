@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from taggit.managers import TaggableManager
 from safe_filefield.models import SafeFileField
+from note.utils import generate_upload_path
 
 
 class Status(models.TextChoices):
@@ -25,7 +26,7 @@ class Note(models.Model):
     priority = models.SmallIntegerField(_("Priority"), choices=Proirity.choices, default=Proirity.MEDIUM)
     created_at = models.DateTimeField(_("Created At"), auto_now_add=True)
     edited_at = models.DateTimeField(_("Edited At"), auto_now=True)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     def __str__(self):
         return (
@@ -49,7 +50,7 @@ class Note(models.Model):
 
 class NoteFile(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE, verbose_name=_("Note"))
-    file = SafeFileField(upload_to="filess/", verbose_name=_("File"))
+    file = SafeFileField(upload_to=generate_upload_path, verbose_name=_("File"))
 
     class Meta:
         verbose_name = _("Note File")
