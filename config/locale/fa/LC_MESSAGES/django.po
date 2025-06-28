@@ -91,3 +91,11 @@ msgstr "فایل یادداشت"
 #: .\note\models.py:-
 msgid "Note Files"
 msgstr "فایل های یادداشت"
+
+#: .\note\models.py:-
+msgid "Archived"
+msgstr "بایگانی شد"
+
+#: .\note\models.py:-
+msgid "Pinned"
+msgstr "پین شده"
