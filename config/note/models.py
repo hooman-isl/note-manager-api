@@ -83,6 +83,35 @@ class NoteFile(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE, verbose_name=_("Note"))
     file = SafeFileField(upload_to=generate_upload_path, verbose_name=_("File"))
 
+    def __str__(self):
+        """
+        Returns the filename and its associated note for display.
+        """
+        return f"File for '{self.note}': {self.file.name}"
+
     class Meta:
         verbose_name = _("Note File")
         verbose_name_plural = _("Note Files")
+
+
+class NoteReminder(models.Model):
+    """
+    Represents a reminder linked to a specific note.
+
+    Each reminder has an associated due date and an activation flag.
+    Only one reminder can exist per note, ensuring a one-to-one relationship.
+    Useful for scheduling tasks or follow-ups related to a note.
+    """
+    note = models.OneToOneField(Note, on_delete=models.CASCADE, verbose_name=_("Note"))
+    due_date = models.DateTimeField(_("Due Date"))
+    is_active = models.BooleanField(_("Activated"), default=False)
+
+    def __str__(self):
+        """
+        Returns a string showing the reminder is linked to which note.
+        """
+        return f"Reminder for '{self.note}'"
+
+    class Meta:
+        verbose_name = _("Note Reminder")
+        verbose_name_plural = _("Note Reminders")

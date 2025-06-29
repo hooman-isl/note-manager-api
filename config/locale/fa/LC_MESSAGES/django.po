@@ -99,3 +99,19 @@ msgstr "بایگانی شد"
 #: .\note\models.py:-
 msgid "Pinned"
 msgstr "پین شده"
+
+#: .\note\models.py:-
+msgid "Activated"
+msgstr "فعال شد"
+
+#: .\note\models.py:-
+msgid "Due Date"
+msgstr "تاریخ سررسید"
+
+#: .\note\models.py:-
+msgid "Note Reminder"
+msgstr "یادآوری یادداشت"
+
+#: .\note\models.py:-
+msgid "Note Reminders"
+msgstr "یادآوری های یادداشت"
