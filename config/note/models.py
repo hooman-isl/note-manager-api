@@ -8,37 +8,17 @@ from note.utils import generate_upload_path
 
 
 class Status(models.TextChoices):
-    """
-    Defines the visibility status of a note.
-    
-    - PRIVATE: The note is visible only to the owner.
-    - PUBLIC: The note is visible to others (e.g., shared or published).
-    """
     PRIVATE = "PV", _("Private")
     PUBLIC = "PB", _("Public")
 
 
 class Proirity(models.IntegerChoices):
-    """
-    Represents the priority level of a note.
-    
-    - LOW: Low importance.
-    - MEDIUM: Normal/default importance.
-    - HIGH: High importance or urgency.
-    """
     LOW = 1, _("Low")
     MEDIUM  = 2, _("Medium")
     HIGH = 3, _("High")
 
 
 class Note(models.Model):
-    """
-    Represents a personal note created by a user.
-
-    Each note includes a title, description, tags, status (public/private),
-    and a priority level. Notes can also be marked as pinned or archived.
-    The creation and last edited timestamps are automatically recorded.
-    """
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name=_("User"))
     title = models.CharField(_("Title"), max_length=200)
     description = models.TextField(_("Description"))
@@ -51,10 +31,6 @@ class Note(models.Model):
     tags = TaggableManager(blank=True)
 
     def __str__(self):
-        """
-        Returns a shortened title preview along with the author's identity.
-        Useful for admin and debugging representations.
-        """
         return (
             f"'{textwrap.shorten(self.title, width=50, placeholder="...")}' from {self.user}"
         )
@@ -66,27 +42,19 @@ class Note(models.Model):
             models.CheckConstraint(
                 check=models.Q(status__in=[Status.PRIVATE, Status.PUBLIC]),
                 name="valid_status_choices"
-            ),  # Ensures only defined status values are allowed
+            ),
             models.CheckConstraint(
                 check=models.Q(priority__gte=Proirity.LOW, priority__lte=Proirity.HIGH),
                 name="valid_priority_range"
-            )   # Ensures priority is within defined integer choices
+            )
         ]
 
 
 class NoteFile(models.Model):
-    """
-    Represents a file attached to a note.
-    
-    Each file is associated with a single note and stored using a secure file field.
-    """
     note = models.ForeignKey(Note, on_delete=models.CASCADE, verbose_name=_("Note"))
     file = SafeFileField(upload_to=generate_upload_path, verbose_name=_("File"))
 
     def __str__(self):
-        """
-        Returns the filename and its associated note for display.
-        """
         return f"File for '{self.note}': {self.file.name}"
 
     class Meta:
@@ -95,21 +63,11 @@ class NoteFile(models.Model):
 
 
 class NoteReminder(models.Model):
-    """
-    Represents a reminder linked to a specific note.
-
-    Each reminder has an associated due date and an activation flag.
-    Only one reminder can exist per note, ensuring a one-to-one relationship.
-    Useful for scheduling tasks or follow-ups related to a note.
-    """
     note = models.OneToOneField(Note, on_delete=models.CASCADE, verbose_name=_("Note"))
     due_date = models.DateTimeField(_("Due Date"))
     is_active = models.BooleanField(_("Activated"), default=False)
 
     def __str__(self):
-        """
-        Returns a string showing the reminder is linked to which note.
-        """
         return f"Reminder for '{self.note}'"
 
     class Meta:

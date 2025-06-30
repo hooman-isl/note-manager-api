@@ -7,6 +7,11 @@ class NoteFileInline(admin.StackedInline):
     extra = 0
 
 
+class NoteReminderInline(admin.StackedInline):
+    model = NoteReminder
+    extra = 0
+
+
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
-    inlines = [NoteFileInline]
+    inlines = [NoteFileInline, NoteReminderInline]

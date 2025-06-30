@@ -6,9 +6,6 @@ from note.utils import safe_remove_file
 
 @receiver(pre_save, sender=NoteFile)
 def cleanup_old_file_on_update(sender, instance, **kwargs):
-    """
-    Deletes the old file before saving if it has been replaced.
-    """
     if instance.pk is None:
         return None
 
@@ -18,7 +15,4 @@ def cleanup_old_file_on_update(sender, instance, **kwargs):
 
 @receiver(post_delete, sender=NoteFile)
 def delete_file_on_instance_delete(sender, instance, **kwargs):
-    """
-    After deleting the object, it deletes the file from disk.
-    """
     safe_remove_file(instance.file)
