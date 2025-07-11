@@ -5,11 +5,12 @@ from note.serializers import *
 from note.models import Note
 from note.mixins import AuthenticatedUserMixin
 from note.decorators import paginated_response
-from rest_framework.response import Response
+from note.filters import NoteFilter
 
 
 class NoteAPIView(AuthenticatedUserMixin, viewsets.ModelViewSet):
     serializer_class = NoteSerializer
+    filterset_class = NoteFilter
 
     def get_queryset(self):
         return Note.objects.filter(user=self.auth_user)

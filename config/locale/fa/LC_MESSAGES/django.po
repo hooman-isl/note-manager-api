@@ -98,7 +98,7 @@ msgstr "بایگانی شد"
 
 #: .\note\models.py:-
 msgid "Pinned"
-msgstr "پین شده"
+msgstr "پین شد"
 
 #: .\note\models.py:-
 msgid "Activated"
@@ -115,3 +115,11 @@ msgstr "یادآوری یادداشت"
 #: .\note\models.py:-
 msgid "Note Reminders"
 msgstr "یادآوری های یادداشت"
+
+#: .\note\filters.py:-
+msgid "Created At (Exact Date)"
+msgstr "تاریخ ایجاد (دقیقا برابر با)"
+
+#: .\note\filters.py:-
+msgid "Created At (Date Range)"
+msgstr "بازه تاریخ ایجاد (از - تا)"

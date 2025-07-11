@@ -9,8 +9,8 @@ def paginated_response(func):
         queryset = func(self, *args, **kwargs)
 
         assert isinstance(queryset, (list, QuerySet)), (
-            f"@paginated_response decorator expected {func.__name__} "
-            f"to return a list or QuerySet, got {type(queryset).__name__}"
+            f"{self.__class__.__name__}.{func.__name__} "
+            f"should return a QuerySet or list, not {type(queryset).__name__!r}"
         )
 
         page = self.paginate_queryset(queryset)
