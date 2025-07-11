@@ -8,7 +8,7 @@ class NoteFilter(django_filters.FilterSet):
         lookup_expr="date", label=_("Created At (Exact Date)")
     )
     created_at__range = django_filters.DateFromToRangeFilter(
-        field_name="created_at", label=_("Created At (Date Range)")
+        field_name="created_at", label=_("Created At Range (From – To)")
     )
 
     class Meta:

@@ -118,8 +118,8 @@ msgstr "یادآوری های یادداشت"
 
 #: .\note\filters.py:-
 msgid "Created At (Exact Date)"
-msgstr "تاریخ ایجاد (دقیقا برابر با)"
+msgstr "ایجاد شده در (تاریخ دقیق)"
 
 #: .\note\filters.py:-
-msgid "Created At (Date Range)"
-msgstr "بازه تاریخ ایجاد (از - تا)"
+msgid "Created At Range (From – To)"
+msgstr "ایجاد شده در محدوده (از - تا)"
